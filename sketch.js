@@ -60,7 +60,7 @@ packageSprite.y= packageBody.position.y ;
  
 }
 
-function keyPressed() {
+function keyPressed(packageSprite) {
  if (keyCode === DOWN_ARROW) {
 	// Look at the hints in the document and understand how to make the package body fall only on
 	function keyPressed() { if (keyCode === DOWN_ARROW) { Matter.Body.setStatic(packageBody,false); } }
