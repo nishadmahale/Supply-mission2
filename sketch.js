@@ -19,7 +19,7 @@ function setup() {
 	packageSprite=createSprite(width/2, 80, 10,10);
 	packageSprite.addImage(packageIMG);
 	packageSprite.scale=0.2;
-
+	
 	helicopterSprite=createSprite(width/2, 200, 10,10);
 	helicopterSprite.addImage(helicopterIMG);
 	helicopterSprite.scale=0.6;
@@ -32,8 +32,9 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:3, isStatic:true});
+	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.7, isStatic:true});
 	World.add(world, packageBody);
+	
 	
 
 	//Create a Ground
@@ -52,13 +53,10 @@ function draw() {
   packageSprite.x= packageBody.position.x ;
   packageSprite.y= packageBody.position.y ;
 
-  if(keyDown(DOWN_ARROW)) {
+ 
+ 
 
-	Matter.Body.setStatic(packageBody,false); 
-	restitution=1.7;
-
-  }
-
+  
   
 
  
@@ -67,23 +65,23 @@ function draw() {
  
 }
 
-function keyPressed(packageBody) {
- if (keyDown === DOWN_ARROW) {
+function keyPressed() {
+ if (keyCode === DOWN_ARROW) {
 	// Look at the hints in the document and understand how to make the package body fall only on
-	function keyPressed() { if (keyCode === DOWN_ARROW) { Matter.Body.setStatic(packageBody,false); } }
-function keyPressed() { if (keyCode === DOWN_ARROW) { Matter.Body.setStatic(packageBody,false); } }
+	Matter.Body.setStatic(packageBody,false);
     
   }
    if (keyDown === LEFT_ARROW) { 
-	  helicopterSprite.x=helicopterSprite.x-20; translation={x:-20,y:0} 
+	  helicopterSprite.x=helicopterSprite.x-20; 
+	  translation={x:-20,y:0} 
 	  Matter.Body.translate(packageBody, translation) 
 	}
    else if (keyDown === RIGHT_ARROW) { 
-	   helicopterSprite.x=helicopterSprite.x+20; translation={x:20,y:0} 
+	   helicopterSprite.x=helicopterSprite.x+20; 
+	   translation={x:20,y:0} 
 	   Matter.Body.translate(packageBody, translation) 
 	} 
-   else if (keyDown === DOWN_ARROW) { 
-	   Matter.Body.setStatic(packageBody,false); } 
+   
 
 
 }
